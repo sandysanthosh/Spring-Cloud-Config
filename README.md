@@ -72,3 +72,26 @@ public class MyController {
 To deploy the application to the cloud, you can use a service like Heroku, AWS, or Google Cloud Platform. You will need to configure the necessary dependencies and settings for your chosen platform.
 
 Finally, use Spring Cloud Config to externalize your application configuration, so that you can manage it in a central location, rather than hard-coding it in the application itself.
+
+
+#### You will also need to set up a Spring Cloud Config Server. You can do this by creating a new Spring Boot application and adding the following dependency:
+
+```
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-config-server</artifactId>
+</dependency>
+```
+
+#### application.properties or application.yml file:
+
+```
+
+spring.cloud.config.server.git.uri=file:///${user.home}/config-repo
+
+```
+
+Create a git repository to store the configuration files and push the files to the remote repository.
+
+Now, when the application starts, it will connect to the Spring Cloud Config Server and retrieve the configuration properties
+
